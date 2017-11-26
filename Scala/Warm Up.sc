@@ -23,7 +23,7 @@ prime(13)
 //For example, twinprimes (41, 43) should return true and twinprimes (43, 47)
 //would return false.
 def twinprimes(prime1: Int, prime2: Int): Boolean = {
-  (prime1 - prime2) match {
+  prime1 - prime2 match {
     case 2 => prime(prime1) && prime(prime2)
     case -2 => prime(prime1) && prime(prime2)
     case _ => false
@@ -54,9 +54,10 @@ twinprimeslist(50)
 //should provide error checking to make sure the integer parameter is even and greater than 2.
 
 def goldbach(n: Int): Unit = {
-  n % 2 == 1 || n <= 2 match {
-    case true => println("Odd number or not greater than 2")
-    case false => goldbachHelper(n, List.range(2, n) filter { x => prime(x) })
+  (n % 2 == 1, n <= 2) match {
+    case (true, false) => println("Odd number")
+    case (false, true) => println("Number not greater than 2")
+    case (false, false) => goldbachHelper(n, List.range(2, n) filter { x => prime(x) })
   }
 }
 
