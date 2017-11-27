@@ -15,14 +15,15 @@ def construct(list : List[String]) : List[Int] = {
         case true => chinese.indexOf(head)::construct(tail) // convert to Int
         case false => english.contains(head) match { // if list contains English
             case true => english.indexOf(head)::construct(tail)// convert to Int
-            case false => Nil // ignore
+            case false => construct(tail) // ignore and continue
           }
       }
   }
 }
 
-def add(list : List[Int]) : Int = list.sum
+def add(list : List[Int]) : Int = list.foldLeft(0)(_ + _)
 
-def multi(list : List[Int]) : Int = list.product
+def multi(list : List[Int]) : Int = list.foldLeft(1)(_ * _)
 
 go(List("yi", "nine", "six", "ba", "josh"))
+go(List("yi","josh","three","si"))
