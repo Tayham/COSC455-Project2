@@ -26,10 +26,6 @@ val test4ExectedSolution: List[Int] = List(1, 0, 1, 1, 1, 0, 1)
 val test6ExectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1)
 
 
-
-
-
-
 // This function does the binary addition when there are uneven lists and still must
 // finish the add with the carry bits.
 def finishBinaryAdd(remainingBits: List[Boolean], carryBit: Boolean): List[Boolean] = {
@@ -89,7 +85,8 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
 }
 
 def binarySubtraction(pList: List[Int], qList: List[Int]) = {
-  binaryAddition(pList, twosComplement(qList))
+  var bitsToDrop = Math.abs(pList.length - qList.length)
+  1 +: binaryAddition(pList, twosComplement(qList)).drop(bitsToDrop)
 }
 
 def twosComplement(aList: List[Int]): List[Int] = {
