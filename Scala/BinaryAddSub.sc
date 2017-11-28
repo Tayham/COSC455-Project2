@@ -85,8 +85,8 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
 }
 
 def binarySubtraction(pList: List[Int], qList: List[Int]) = {
-  var bitsToDrop = Math.abs(pList.length - qList.length)
-  1 +: binaryAddition(pList, twosComplement(qList)).drop(bitsToDrop)
+  var bitsToDrop = Math.abs(pList.length - qList.length - 1)
+  binaryAddition(pList, 1 :: twosComplement(qList)).drop(bitsToDrop)
 }
 
 def twosComplement(aList: List[Int]): List[Int] = {
